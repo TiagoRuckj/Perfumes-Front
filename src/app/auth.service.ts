@@ -29,7 +29,7 @@ export class AuthService {
 
 
   login(body: any): Observable<any> {
-    return this.http.post('http://localhost:3000/entities/login', body);
+    return this.http.post('http://localhost:3000/usuarios/login', body);
   }
 
   
@@ -75,5 +75,5 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
-
 }
+

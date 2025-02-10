@@ -1,1 +1,5 @@
-<p>perfume-detalles works!</p>
+<div class="perfume-detalles" *ngIf="perfume">
+    <h2>{{ perfume.nombre }}</h2>
+    <p><strong>Notas:</strong> {{ perfume.notas }}</p>
+  </div>
+  

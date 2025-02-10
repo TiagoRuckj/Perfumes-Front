@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="home-header">
+    <h1>PerfumesLux</h1>
+    <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
+  </div>
+
+<div class="perfumes-container">
+    <app-perfume *ngFor="let perfume of perfumes" [perfume]="perfume" [isAdmin]="isAdmin" (seleccionPerfume)="navegarADetalles($event)"></app-perfume>
+</div>
+  
+<div class="paginacion">
+    <button (click)="anterior()" [disabled]="paginaActual === 1">Anterior</button>
+    <button (click)="siguiente()">Siguiente</button>
+</div>
