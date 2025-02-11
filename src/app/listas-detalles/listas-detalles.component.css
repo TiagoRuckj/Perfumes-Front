@@ -1,0 +1,42 @@
+/* Contenedor principal de la lista de detalles */
+.lista-detalle-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff6e6; /* Un tono suave para el fondo */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Título de la lista */
+  .lista-detalle-container h2 {
+    font-family: 'Playfair Display', serif;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Espaciado entre los perfumes */
+  .lista-detalle-container app-perfume-lista {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Botón para volver */
+  .volver-btn {
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 20px;
+  }
+  
+  .volver-btn:hover {
+    background: #e68900;
+  }
+  

@@ -1,28 +1,42 @@
 /* Contenedor del header con el botón de cerrar sesión */
 .home-header {
-    display: flex;
-    justify-content: space-between; /* Separa el título del botón */
-    align-items: center;
-    padding: 20px;
-    background: #f5f5f5;
-    border-bottom: 2px solid #ddd;
-    height: 5vh;
-  }
+  display: flex;
+  justify-content: space-between; /* Esto coloca los elementos a los extremos */
+  align-items: center;  /* Alinea verticalmente los elementos */
+  padding: 10px 20px;
+  background-color: #f8f1e4;
+}
   
   /* Botón de cerrar sesión */
-  .logout-button {
-    background: #d9534f; /* Rojo elegante */
+  .listas-button {
+    background-color: #ff7043;
     color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.2s ease-in-out;
-    font-size: 1rem;
+    position: relative;
+    font-size: 16px;
+    transition: background 0.3s;
+  }
+  
+  .listas-button:hover {
+    background-color: #e64a19;
+  }
+  
+  .logout-button {
+    background-color: #ff7043;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
   }
   
   .logout-button:hover {
-    background: #c9302c;
+    background-color: #e64a19;
   }
   
 
@@ -66,3 +80,17 @@
     cursor: not-allowed;
   }
   
+  .agregar-perfume-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .agregar-perfume-button:hover {
+    background-color: #45a049;
+  }

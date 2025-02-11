@@ -2,8 +2,8 @@
     <h3>{{ perfume.nombre }}</h3>
   
     <div class="admin-buttons" *ngIf="isAdmin">
-      <button class="edit-btn" (click)="editPerfume()">Editar</button>
-      <button class="delete-btn" (click)="deletePerfume()">Eliminar</button>
+      <button class="edit-btn" (click)="editPerfume($event)">Editar</button>
+      <button class="delete-btn" (click)="deletePerfume($event)">Eliminar</button>
     </div>
   </div>
   

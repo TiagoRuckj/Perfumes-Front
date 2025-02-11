@@ -23,6 +23,22 @@
       <div class="emoji-promedio">{{ emojiPromedio }}</div>
     </div>
 
+    <!-- Sección de Listas -->
+    <div class="seccion-listas">
+      <label for="listas">Agregar a lista:</label>
+      <select id="listas" [(ngModel)]="listaSeleccionada">
+        <option *ngFor="let lista of listasUsuario" [value]="lista.idLista">
+          {{ lista.nombre }}
+        </option>
+      </select>
+      <button (click)="agregarAPerfil()">Añadir</button>
+    </div>
+
+    <!-- Popup de Confirmación -->
+    <div class="popup" *ngIf="mostrarPopup">
+      Perfume agregado correctamente a la lista.
+    </div>
+
     <!-- Botón para volver a Home -->
     <button class="btn-volver" (click)="volverHome()">Volver a Home</button>
   </div>

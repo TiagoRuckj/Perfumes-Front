@@ -1,1 +1,12 @@
-<p>listas-detalles works!</p>
+<div class="lista-detalle-container">
+    <h2>{{ lista.nombre }}</h2>
+  
+    <!-- Mostrar perfumes de la lista -->
+    <div *ngFor="let perfume of perfumesDeLista">
+      <app-perfume-lista [perfume]="perfume" (eliminar)="eliminarPerfume($event)"></app-perfume-lista>
+    </div>
+  
+    <!-- Botón para volver -->
+    <button class="volver-btn" (click)="volver()">Volver a Listas</button>
+  </div>
+  

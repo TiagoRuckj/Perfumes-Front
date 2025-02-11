@@ -68,4 +68,12 @@ export class HomeComponent implements OnInit {
   navegarADetalles(idPerfume: number) {
     this.router.navigate([`/perfume/${idPerfume}`]);
   }
+
+  verMisListas() {
+    this.router.navigate(['/listas']);
+  }
+
+  agregarPerfume() {
+    this.router.navigate(['/agregar-perfume']); // Redirigir a la página para agregar un perfume
+  }
 }
