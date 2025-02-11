@@ -1,1 +1,24 @@
-<p>listas works!</p>
+<button class="agregar-btn" (click)="abrirPopup()">Agregar Lista</button>
+
+<div class="listas-container">
+    <h2>Tus Listas</h2>
+  
+    <!-- Mostrar las listas del usuario -->
+    <div *ngFor="let lista of listasUsuario">
+      <app-lista [lista]="lista" (eliminarLista)="eliminarLista($event)"></app-lista>
+    </div>
+  
+  
+    <!-- Popup para agregar una nueva lista -->
+    <div class="popup" *ngIf="mostrarPopup">
+      <div class="popup-contenido">
+        <h2>Agregar Nueva Lista</h2>
+        <input type="text" [(ngModel)]="nuevoNombreLista" placeholder="Nombre de la lista">
+        <button (click)="agregarLista()">Agregar</button>
+        <button (click)="cerrarPopup()">Cancelar</button>
+      </div>
+    </div>
+
+    <button class="volver-btn" (click)="volverHome()">Volver a Home</button>
+  </div>
+  
