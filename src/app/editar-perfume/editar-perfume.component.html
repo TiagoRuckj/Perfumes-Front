@@ -1,1 +1,20 @@
-<p>editar-perfume works!</p>
+<div class="editar-perfume-container">
+    <h2>Editar Perfume</h2>
+  
+    <form (submit)="editarPerfume()">
+      <label for="nombre">Nombre del Perfume:</label>
+      <input type="text" id="nombre" [(ngModel)]="perfume.nombre" name="nombre" required>
+  
+      <label for="notas">Notas del Perfume (separadas por coma):</label>
+      <input type="text" id="notas" [(ngModel)]="perfume.notas" name="notas" required>
+  
+      <button type="submit" class="guardar-btn">Guardar Cambios</button>
+    </form>
+  
+    <!-- Mensaje de confirmación -->
+    <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+  
+    <!-- Botón para volver a Home -->
+    <button class="volver-btn" (click)="volverAHome()">Volver a Home</button>
+  </div>
+  

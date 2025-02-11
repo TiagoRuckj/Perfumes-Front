@@ -7,6 +7,7 @@ import { PerfumeDetallesComponent } from './perfume-detalles/perfume-detalles.co
 import { ListasComponent } from './listas/listas.component';
 import { ListasDetallesComponent } from './listas-detalles/listas-detalles.component';
 import { EditarPerfumeComponent } from './editar-perfume/editar-perfume.component';
+import { AgregarPerfumeComponent } from './agregar-perfume/agregar-perfume.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,12 @@ export const routes: Routes = [
         path: 'editarPerfume/:idPerfume',
         component: EditarPerfumeComponent,
         title: 'Editar Perfume',
+        canActivate: [AuthGuardAdmin]
+    },
+    {
+        path: 'agregarPerfume',
+        component: AgregarPerfumeComponent,
+        title: 'Agregar Perfume',
         canActivate: [AuthGuardAdmin]
     }
 ];

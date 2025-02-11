@@ -30,4 +30,16 @@ import { Perfume } from './Perfume';
         const headers = { Authorization: `Bearer ${token}` };
         return this.http.get<Perfume>('http://localhost:3000/perfumes/' + idPerfume, {headers});
     }
+
+    addPerfume(perfume: Perfume): Observable<any> {
+        const token = localStorage.getItem('token');
+        const headers = { Authorization: `Bearer ${token}` };
+        return this.http.post('http://localhost:3000/perfumes/add', perfume, {headers});
+    }
+
+    editarPerfume(idPerfume:number, perfume: Perfume): Observable<any> {
+        const token = localStorage.getItem('token');
+        const headers = { Authorization: `Bearer ${token}` };
+        return this.http.put('http://localhost:3000/perfumes/update/'+idPerfume, perfume, {headers});
+    }
 }

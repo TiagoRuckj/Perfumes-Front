@@ -74,6 +74,6 @@ export class HomeComponent implements OnInit {
   }
 
   agregarPerfume() {
-    this.router.navigate(['/agregar-perfume']); // Redirigir a la página para agregar un perfume
+    this.router.navigate(['/agregarPerfume']); // Redirigir a la página para agregar un perfume
   }
 }
