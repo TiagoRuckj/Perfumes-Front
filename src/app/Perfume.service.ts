@@ -42,4 +42,10 @@ import { Perfume } from './Perfume';
         const headers = { Authorization: `Bearer ${token}` };
         return this.http.put('http://localhost:3000/perfumes/update/'+idPerfume, perfume, {headers});
     }
+
+    buscarPerfume(nombre: string, paginaActual: number): Observable<Perfume[]> {
+        const token = localStorage.getItem('token');
+        const headers = { Authorization: `Bearer ${token}` };
+        return this.http.get<Perfume[]>('http://localhost:3000/perfumes/buscar/' + nombre + '/'+ paginaActual, {headers});
+    }
 }
