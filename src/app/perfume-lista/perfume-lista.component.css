@@ -1,0 +1,49 @@
+.perfume-lista-item {
+    background: #f8f1e4;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .perfume-lista-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .perfume-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .perfume-lista-item h3 {
+    font-family: 'Playfair Display', serif;
+    color: #4a4a4a;
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+  }
+  
+  .perfume-notas {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .eliminar-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .eliminar-btn:hover {
+    background-color: #c9302c;
+  }
+  

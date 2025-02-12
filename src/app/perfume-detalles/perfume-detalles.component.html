@@ -1,0 +1,45 @@
+<div class="perfume-detalles">
+  <div class="detalle-container">
+    <h2>{{ perfume?.nombre }}</h2>
+    <p class="notas">Notas: {{ perfume?.notas }}</p>
+
+    <!-- Clasificación del usuario -->
+    <div class="clasificacion">
+      <strong>Tu clasificación:</strong>
+      <div class="caras">
+        <span
+          *ngFor="let cara of caras; let i = index"
+          (click)="cambiarClasificacion(i + 1)"
+          [class.selected]="i + 1 === clasificacionUsuario"
+        >
+          {{ cara }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Clasificación general -->
+    <div class="clasificacion-general">
+      <strong>Clasificación general:</strong>
+      <div class="emoji-promedio">{{ emojiPromedio }}</div>
+    </div>
+
+    <!-- Sección de Listas -->
+    <div class="seccion-listas">
+      <label for="listas">Agregar a lista:</label>
+      <select id="listas" [(ngModel)]="listaSeleccionada">
+        <option *ngFor="let lista of listasUsuario" [value]="lista.idLista">
+          {{ lista.nombre }}
+        </option>
+      </select>
+      <button (click)="agregarAPerfil()">Añadir</button>
+    </div>
+
+    <!-- Popup de Confirmación -->
+    <div class="popup" *ngIf="mostrarPopup">
+      Perfume agregado correctamente a la lista.
+    </div>
+
+    <!-- Botón para volver a Home -->
+    <button class="btn-volver" (click)="volverHome()">Volver a Home</button>
+  </div>
+</div>

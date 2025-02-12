@@ -1,0 +1,150 @@
+.listas-container {
+    padding: 20px;
+    background: #f8f1e4;
+  }
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    color: #4a4a4a;
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para el contenedor de las listas */
+  .lista-item {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .lista-item h3 {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  }
+  
+  .lista-item button {
+    background-color: #ff7043;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .lista-item button:hover {
+    background-color: #e64a19;
+  }
+  
+  /* Estilo para el botón de agregar lista */
+  .agregar-lista-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .agregar-lista-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Popup para agregar nueva lista */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .popup-contenido {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .popup-contenido h2 {
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+  }
+  
+  .popup-contenido input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .popup-contenido button {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .popup-contenido button:hover {
+    opacity: 0.8;
+  }
+  
+  .popup-contenido button:first-of-type {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .popup-contenido button:last-of-type {
+    background-color: #ff7043;
+    color: white;
+  }
+
+  .agregar-btn {
+    background-color: #ff7043; /* Color de fondo azul */
+    color: white;  /* Color de texto blanco */
+    padding: 10px 20px;  /* Espaciado dentro del botón */
+    border: none;  /* Sin borde */
+    border-radius: 5px;  /* Bordes redondeados */
+    cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px;  /* Tamaño de texto */
+    transition: background-color 0.3s;  /* Animación suave al cambiar de color */
+  }
+  
+  .agregar-btn:hover {
+    background-color: #e64a19;  /* Color de fondo más oscuro al pasar el cursor */
+  }
+  
+  .agregar-btn:focus {
+    outline: none;  /* Elimina el borde al hacer foco */
+  }
+
+  .volver-btn {
+    background-color: #4CAF50;  /* Color verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .volver-btn:hover {
+    background-color: #45a049;  /* Un tono más oscuro de verde para el hover */
+  }
+  
+  
