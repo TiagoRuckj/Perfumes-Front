@@ -5,11 +5,13 @@ import { AuthService } from '../auth.service';
 import { PerfumeComponent } from '../perfume/perfume.component';
 import { Perfume } from '../Perfume';
 import { Router } from '@angular/router';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PerfumeComponent],
+  imports: [CommonModule, PerfumeComponent, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -17,24 +19,37 @@ export class HomeComponent implements OnInit {
   perfumeService = inject(PerfumeService);
   authService = inject(AuthService);
   paginaActual: number = 1;
-
-  constructor(private router: Router) { }
-
   perfumes: any[] = [];
   isAdmin = false;
+
+  // Control del campo de búsqueda
+  searchControl = new FormControl('');
+
+  constructor(private router: Router) {}
 
   async ngOnInit() {
     this.authService.getDecodedToken().subscribe({
       next: (decodedToken) => {
         if (decodedToken && decodedToken.result?.isAdmin) {
-          this.isAdmin = decodedToken.result.isAdmin
+          this.isAdmin = decodedToken.result.isAdmin;
         }
       },
       error: (error) => {
         console.error('Error al obtener el token:', error);
       }
-    }) // Extrae el rol del token
+    });
+
     this.loadPerfumes();
+
+    // Configurar el debounce para la búsqueda
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(500), // Espera 500ms después de la última entrada
+        distinctUntilChanged() // Evita hacer la misma búsqueda repetida
+      )
+      .subscribe(value => {
+        this.buscarPerfume(value || '', this.paginaActual);
+      });
   }
 
   loadPerfumes() {
@@ -48,21 +63,45 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  buscarPerfume(nombre: string, paginaActual: number) {
+    if (!nombre) {
+      this.loadPerfumes(); // Si el campo está vacío, carga todos los perfumes
+      return;
+    }
+    
+    this.perfumeService.buscarPerfume(nombre, paginaActual).subscribe(
+      (data: Perfume[]) => {
+        this.perfumes = data;
+      },
+      (error) => {
+        console.error('Error en la búsqueda de perfumes:', error);
+      }
+    );
+  }
+
   siguiente(): void {
     this.paginaActual++;
-    this.loadPerfumes();
+    if (this.searchControl.value === ''){
+      this.loadPerfumes();
+    } else {
+      this.buscarPerfume(this.searchControl.value || '', this.paginaActual);
+    }
+    
   }
 
   anterior(): void {
-    if (this.paginaActual > 1) {
+    if (this.paginaActual > 1 && this.searchControl.value === '') {
       this.paginaActual--;
       this.loadPerfumes();
+    } else {
+      this.paginaActual--;
+      this.buscarPerfume(this.searchControl.value || '', this.paginaActual);
     }
   }
 
   logout() {
-    localStorage.removeItem('token'); // Eliminar el token
-    this.router.navigate(['/login']); // Redirigir al login
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 
   navegarADetalles(idPerfume: number) {
@@ -74,6 +113,6 @@ export class HomeComponent implements OnInit {
   }
 
   agregarPerfume() {
-    this.router.navigate(['/agregarPerfume']); // Redirigir a la página para agregar un perfume
+    this.router.navigate(['/agregarPerfume']);
   }
 }
