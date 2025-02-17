@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
   authService = inject(AuthService);
   router = inject(Router);
 
-  // Estado del modal
+  // Estado del modals
   showErrorModal = false;
 
   applyForm = new FormGroup({
