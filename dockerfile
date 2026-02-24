@@ -1,32 +1,29 @@
-# Usa una imagen de Node.js como base para la construcción
-FROM node:lts AS build
-
-# Establece el directorio de trabajo
+# ETAPA 1: Construcción
+FROM node:lts-alpine AS build
 WORKDIR /app
 
-# Copia el package.json y package-lock.json (o yarn.lock) al contenedor
+# Instalamos dependencias
 COPY package*.json ./
-
-# Instala las dependencias de la aplicación
 RUN npm install
 
-# Copia el resto de los archivos del proyecto al contenedor
+# Copiamos el código y generamos el build
 COPY . .
-
-# Construye la aplicación Angular
 RUN npm run build
 
-# Usa una imagen de Nginx para servir la aplicación
-FROM nginx:alpine
+# ETAPA 2: Servidor Web
+FROM nginx:stable-alpine
 
-# Copia los archivos de la construcción desde el contenedor de build al contenedor de Nginx
-COPY --from=build /app/dist/perfumes-front/browser /usr/share/nginx/html
+# Borramos los archivos por defecto de nginx
+RUN rm -rf /usr/share/nginx/html/*
 
-# Copia la configuración personalizada de Nginx
+# COPIA CRÍTICA: Ajustada para versiones modernas de Angular
+# Nota: Si tu proyecto tiene un nombre distinto en angular.json, 
+# el asterisco (*) lo encontrará automáticamente.
+COPY --from=build /app/dist/*/browser /usr/share/nginx/html
+
+# Copiamos la configuración de Nginx (paso siguiente)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expone el puerto en el que Nginx servirá la aplicación
 EXPOSE 80
 
-# Comando para ejecutar Nginx
 CMD ["nginx", "-g", "daemon off;"]

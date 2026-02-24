@@ -29,7 +29,7 @@ export class AuthService {
 
 
   login(body: any): Observable<any> {
-    return this.http.post('http://localhost:3000/usuarios/login', body);
+    return this.http.post('http://localhost:8080/usuarios/login', body);
   }
 
   
@@ -41,7 +41,7 @@ export class AuthService {
       }
 
       // Assuming you make an API call to verify token
-      this.http.post<{ message: string }>('http://localhost:3000/auth/verify', { token })
+      this.http.post<{ message: string }>('http://localhost:8080/auth/verify', { token })
         .subscribe(
           res => {
             if (res.message === 'Token verified successfully') {
@@ -61,7 +61,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token) {
       const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-      return this.http.get<any>('http://localhost:3000/auth/decode', { headers }); // Llama al endpoint para decodificar
+      return this.http.get<any>('http://localhost:8080/auth/decode', { headers }); // Llama al endpoint para decodificar
     } else {
       console.error('No token found');
       return new Observable<any>();

@@ -13,6 +13,6 @@ import { tap } from 'rxjs';
     constructor(private http: HttpClient) { }
 
     addUsuario(body: any): Observable<any> {
-        return this.http.post('http://localhost:3000/usuarios/add', body);
+        return this.http.post('http://localhost:8080/usuarios/add', body);
     }
 }

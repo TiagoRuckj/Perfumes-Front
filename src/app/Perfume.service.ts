@@ -16,36 +16,36 @@ import { Perfume } from './Perfume';
     getPerfumesPorPagina(pagina: number): Observable<Perfume[]> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<any[]>('http://localhost:3000/perfumes/all/'+ pagina, {headers});
+        return this.http.get<any[]>('http://localhost:8080/perfumes/all/'+ pagina, {headers});
     }
 
     deletePerfume(idPerfume: number): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.delete('http://localhost:3000/perfumes/delete/' + idPerfume, {headers});
+        return this.http.delete('http://localhost:8080/perfumes/delete/' + idPerfume, {headers});
     }
 
     getPerfume(idPerfume: number): Observable<Perfume> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<Perfume>('http://localhost:3000/perfumes/' + idPerfume, {headers});
+        return this.http.get<Perfume>('http://localhost:8080/perfumes/' + idPerfume, {headers});
     }
 
     addPerfume(perfume: Perfume): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.post('http://localhost:3000/perfumes/add', perfume, {headers});
+        return this.http.post('http://localhost:8080/perfumes/add', perfume, {headers});
     }
 
     editarPerfume(idPerfume:number, perfume: Perfume): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.put('http://localhost:3000/perfumes/update/'+idPerfume, perfume, {headers});
+        return this.http.put('http://localhost:8080/perfumes/update/'+idPerfume, perfume, {headers});
     }
 
     buscarPerfume(nombre: string, paginaActual: number): Observable<Perfume[]> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<Perfume[]>('http://localhost:3000/perfumes/buscar/' + nombre + '/'+ paginaActual, {headers});
+        return this.http.get<Perfume[]>('http://localhost:8080/perfumes/buscar/' + nombre + '/'+ paginaActual, {headers});
     }
 }

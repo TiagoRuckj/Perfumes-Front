@@ -16,38 +16,38 @@ import { tap } from 'rxjs';
     getOneLista(idLista: number): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<any>('http://localhost:3000/listas/'+ idLista, {headers});
+        return this.http.get<any>('http://localhost:8080/listas/'+ idLista, {headers});
 
     }
 
     getAllListas(): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.get<any[]>('http://localhost:3000/listas/all', {headers});
+        return this.http.get<any[]>('http://localhost:8080/listas/all', {headers});
     }
 
     addLista(nombre: string): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.post('http://localhost:3000/listas/add', {nombre}, {headers});
+        return this.http.post('http://localhost:8080/listas/add', {nombre}, {headers});
     }
 
     deleteLista(idLista: number): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.delete('http://localhost:3000/listas/delete/'+ idLista, {headers});
+        return this.http.delete('http://localhost:8080/listas/delete/'+ idLista, {headers});
     }
 
     addPerfume(idLista: number, idPerfume: number): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.post('http://localhost:3000/listas/addPerfume/'+ idLista, {idPerfume}, {headers});
+        return this.http.post('http://localhost:8080/listas/addPerfume/'+ idLista, {idPerfume}, {headers});
     }
 
     deletePerfume(idLista: number, idPerfume: number): Observable<any> {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
-        return this.http.delete('http://localhost:3000/listas/deletePerfume/' + idLista + '/'+ idPerfume, {headers});
+        return this.http.delete('http://localhost:8080/listas/deletePerfume/' + idLista + '/'+ idPerfume, {headers});
     }
     
 
